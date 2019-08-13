@@ -10,6 +10,10 @@ app.config['SECRET_KEY'] = 'this is a super secret key you should change'
 
 csrf = CSRFProtect(app)
 
+# Add a blueprint for routes in the /api/v1 folder
+from api.v1 import bp as api_v1_bp    # NOQA
+app.register_blueprint(api_v1_bp, url_prefix='/api/v1')
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
