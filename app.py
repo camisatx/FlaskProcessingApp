@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import abort, Flask, jsonify, render_template
 from flask_wtf.csrf import CSRFProtect
 
 from model import ProcessForm
@@ -49,7 +49,10 @@ def planets():
 
 @app.route('/planets/<name>', methods=['GET'])
 def planet(name):
-    return jsonify(planets_data[name])
+    if planets_data.get(name):
+        return jsonify(planets_data[name])
+    else:
+        abort(404)
 
 
 #--------------------- Required to make the app run! -------------------------
