@@ -2,7 +2,7 @@ from flask import abort, jsonify
 
 from api.v1 import bp
 
-"""Example file showing how to create API routes for data"""
+"""Example file showing how to create API routes for data in a Flask blueprint"""
 
 
 data = {
